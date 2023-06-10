@@ -26,5 +26,7 @@ install all required libraries: `pip install requirements.txt`
 
 ## More information
 
+If you wish to use the pretrained model used for our evaluations, it has been provided a [Google Drive Link here](https://drive.google.com/file/d/1_bf-87_-GgGR7CMk6bMlDAFcXQf2VMgx/view?usp=sharing).
+
 We provide bash scripts all_attacks.sh and attack.sh to perform adversarial attacks using a slurm cluster.
 One can update the `--path` in attack.py to the path of the model to be attacked.
