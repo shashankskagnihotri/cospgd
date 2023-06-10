@@ -1,6 +1,6 @@
 # CosPGD
 
-<img align="center" src="assets/kitti_targeted.png" width="750">
+<img align="center" src="assets/sintel_targeted.png" width="1050">
 
 ## Introduction
 
