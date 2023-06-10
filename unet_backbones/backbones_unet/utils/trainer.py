@@ -3,6 +3,7 @@ import torch
 import math
 import sys
 from tqdm import tqdm, trange
+from attack_implementations import Attack
 
 import torch.nn.functional as F
 
@@ -224,17 +225,19 @@ class Trainer:
                     orig_preds = self.model(images)
                 if 'pgd' in self.attack:
                     if self.norm == 'inf':
-                        images = images + torch.FloatTensor(images.shape).uniform_(-1*self.epsilon, self.epsilon).to(images.device)
-                        #images = torch.clamp(images + torch.FloatTensor(images.shape).uniform_(-1*self.epsilon, self.epsilon).to(images.device), min=0, max=1)
+                        images = Attack.init_linf(
+                            images,
+                            epsilon = self.epsilon,
+                            clamp_min = 0,
+                            clamp_max = 1
+                        )
                     elif self.norm == 'two':
-                        adv_images = images.clone().detach()
-                        self.batch_size = len(images)
-                        delta = torch.empty_like(adv_images).normal_()
-                        d_flat = delta.view(adv_images.size(0), -1)
-                        n = d_flat.norm(p=2, dim=1).view(adv_images.size(0), 1, 1, 1)
-                        r = torch.zeros_like(n).uniform_(0, 1)
-                        delta *= r/n*self.epsilon
-                        images = torch.clamp(adv_images + delta, min=0, max=1).detach() 
+                        images = Attack.init_l2(
+                            images,
+                            epsilon = self.epsilon,
+                            clamp_min = 0,
+                            clamp_max = 1
+                        )
                 #images.retain_grad()
                 images.requires_grad=True
                 preds = self.model(images)
@@ -244,22 +247,48 @@ class Trainer:
                     loss = self.criterion(preds.float(), labels.float())
                 for t in range(self.iterations):                    
                     if self.attack == 'cospgd':
-                        one_hot_target = F.one_hot(torch.clamp(labels, labels.min(), self.num_classes-1), num_classes=self.num_classes).permute(0,3,1,2)
-                        cossim = F.cosine_similarity(F.softmax(preds, dim=1), one_hot_target, dim=1)
-                        if self.targeted:
-                            cossim = 1 - cossim
-                        loss = cossim.detach() * loss
+                        loss = Attack.cospgd_scale(
+                            predictions = preds,
+                            labels = labels,
+                            loss = loss,
+                            num_classes = self.num_classes,
+                            targeted = self.targeted
+                        )
                     elif self.attack == 'segpgd':
-                        lambda_t = t/(2*self.iterations)
-                        output_idx = torch.argmax(preds, dim=1)
-                        if self.targeted:
-                            loss=torch.sum(torch.where(output_idx==labels,lambda_t*loss, (1-lambda_t)*loss))/(preds.shape[-2]*preds.shape[-1])
-                        else:
-                            loss=torch.sum(torch.where(output_idx==labels, (1-lambda_t)*loss, lambda_t*loss))/(preds.shape[-2]*preds.shape[-1])
+                        loss = Attack.segpgd_scale(
+                            predictions = preds,
+                            labels = labels,
+                            loss = loss,
+                            iteration = t,
+                            iterations = self.iterations,
+                            targeted = self.targeted
+                        )
                     loss = loss.mean()
                     loss.backward()
-                    #def fgsm_attack(self, perturbed_image, data_grad, orig_image):
-                    images = self.fgsm_attack(images, images.grad, orig_image)
+                    if self.norm == 'inf':
+                        images = Attack.step_inf(
+                            perturbed_image = images,
+                            epsilon = self.epsilon,
+                            data_grad = images.grad,
+                            orig_image = orig_image,
+                            alpha = self.alpha,
+                            targeted = self.targeted,
+                            clamp_min = 0,
+                            clamp_max = 1,
+                            grad_scale = None
+                        )
+                    elif self.norm == 'two':
+                        images = Attack.step_l2(
+                            perturbed_image = images,
+                            epsilon = self.epsilon,
+                            data_grad = images.grad,
+                            orig_image = orig_image,
+                            alpha = self.alpha,
+                            targeted = self.targeted,
+                            clamp_min = 0,
+                            clamp_max = 1,
+                            grad_scale = None
+                        )
                     images.requires_grad = True
                     preds = self.model(images)
                     if "CrossEntropyLoss" in str(type(self.criterion)):

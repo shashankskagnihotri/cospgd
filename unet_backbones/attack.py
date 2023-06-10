@@ -1,5 +1,7 @@
-import sys
+import sys, os
 sys.path.append('unet_backbones')
+sys.path.append(os.path.join("..", "cospgd"))
+from attack_implementations import Attack
 from backbones_unet.model.unet import Unet
 from backbones_unet.utils.dataset import SemanticSegmentationDataset
 from backbones_unet.model.losses import DiceLoss
@@ -11,7 +13,6 @@ from torch.utils.data import DataLoader
 import torch.nn as nn
 import torch.nn.functional as F
 import argparse
-import os
 import random
 import torchvision
 from torchvision.transforms import Normalize
@@ -59,6 +60,7 @@ def get_args_parser():
                         help='Encoder')
 # * Dataset parameters
     parser.add_argument('--dataset', default='cityscapes', type=str, help='dataset to train/eval on')
+    parser.add_argument('--data_root', default='', type=str, help='root of dataset to train/eval on')
     parser.add_argument("--download", action='store_true', default=False, help="download datasets")
     parser.add_argument('--crop_size', default=512, type=int, help='crop_size for training')
     parser.add_argument('--crop_val', action='store_true', default=False, help='To crop  val images or not')
@@ -162,8 +164,8 @@ def main(args):
     random.seed(seed) """
     set_seed(args.seed)
 
-    dataset_path={"pascalvoc2012": {"num_classes":21, "data_root": "datasets/data/VOCdevkit/VOC2012", "crop_size":256},
-            "cityscapes": {"num_classes":19, "data_root": "datasets/data/cityscapes", "crop_size":512}}
+    dataset_path={"pascalvoc2012": {"num_classes":21, "crop_size":256},
+            "cityscapes": {"num_classes":19, "crop_size":512}}
     args.num_classes = dataset_path[args.dataset]["num_classes"]
 
     if 'small_decoder_True' in args.path:
@@ -189,7 +191,7 @@ def main(args):
         args.targeted = False   
 
 
-    args.data_root = dataset_path[args.dataset]["data_root"] 
+    #args.data_root = dataset_path[args.dataset]["data_root"] 
     args.crop_size = dataset_path[args.dataset]["crop_size"] 
 
     for arg, value in sorted(vars(args).items()):
