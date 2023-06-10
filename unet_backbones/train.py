@@ -37,13 +37,13 @@ def get_args_parser():
     parser.add_argument('--lr_decay_rate', default=0.99, type=float)
     parser.add_argument('--batch_size', default=2, type=int)
     parser.add_argument('--weight_decay', default=1e-4, type=float)
-    parser.add_argument('--epochs', default=100, type=int)
+    parser.add_argument('--epochs', default=150, type=int)
     parser.add_argument('--clip_max_norm', default=0.1, type=float,
                         help='gradient clipping max norm')
     parser.add_argument('--device', default='cuda',
                         help='device to use for training / testing')
     parser.add_argument('--seed', default=42, type=int)
-    parser.add_argument('--small_decoder', default="False", type=str)
+    parser.add_argument('--small_decoder', default="True", type=str)
     parser.add_argument('-en', '--encoder', type=str, default='convnext_tiny', help="list of all models: {'convnext_atto', 'convnext_atto_ols', 'convnext_base', \
                                                                                 'convnext_base_384_in22ft1k', 'convnext_base_in22ft1k', \
                                                                                 'convnext_base_in22k', 'convnext_femto', 'convnext_femto_ols', \
@@ -85,10 +85,7 @@ def get_args_parser():
     parser.add_argument('-nr', '--norm', type=str, default="inf", choices={'inf', 'two', 'one'},
                         help='lipschitz continuity bound to use')
     parser.add_argument('-tar', '--targeted', type=str, default="False", choices={'False', 'True'},
-                        help='use a targeted attack or not')
-    #/home/shashank/project/unet_backbones/experiments/cityscapes/convnext_tiny/epochs_100/lr_0.0001/model/best_model.pt
-    parser.add_argument('-pt', '--path', type=str, default='experiments/cityscapes/convnext_tiny/epochs_100/lr_0.0001/model/best_model.pt',
-                        help='Path of pretrained model to be adversarially attacked')
+                        help='use a targeted attack or not')    
     parser.add_argument('-m', '--mode', type=str, default='train', choices={'adv_attack', 'adv_train', 'train', 'test'},
                         help='What to do?')
 

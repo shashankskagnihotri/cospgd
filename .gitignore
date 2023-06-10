@@ -1,0 +1,11 @@
+*.out
+*.err
+unet_backbones/slurm/*
+unet_backbones/experiments/*
+unet_backbones/results/*
+unet_backbones/datasets/data/*
+*.zip
+*.png
+*.pt
+*.jpeg
+*.npy

@@ -86,8 +86,7 @@ def get_args_parser():
                         help='lipschitz continuity bound to use')
     parser.add_argument('-tar', '--targeted', type=str, default="False", choices={'False', 'True'},
                         help='use a targeted attack or not')
-    #/home/shashank/project/unet_backbones/experiments/cityscapes/convnext_tiny/epochs_100/lr_0.0001/model/best_model.pt
-    parser.add_argument('-pt', '--path', type=str, default='results/neurips/cityscapes/convnext_tiny/small_deocder_True/epochs_100/lr_0.0001/seed_42/model/best_model.pt',
+    parser.add_argument('-pt', '--path', type=str, default='experiments/cityscapes/convnext_tiny/small_deocder_False/epochs_150/lr_0.0001/seed_42/model/best_model.pt',
                         help='Path of pretrained model to be adversarially attacked')
     parser.add_argument('-m', '--mode', type=str, default='adv_attack', choices={'adv_attack', 'adv_train', 'train', 'test'},
                         help='What to do?')
