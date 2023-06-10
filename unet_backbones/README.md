@@ -23,11 +23,11 @@ install all required libraries: `pip install requirements.txt`
     ```
 
 2. Then download the files:
-    ```
-    1. [gtFine_trainvaltest.zip](https://www.cityscapes-dataset.com/file-handling/?packageID=1)
-    2. [gtCoarse.zip](https://www.cityscapes-dataset.com/file-handling/?packageID=2)
-    3. [leftImg8bit_trainvaltest.zip](https://www.cityscapes-dataset.com/file-handling/?packageID=3)
-    ```
+    
+>    1. [gtFine_trainvaltest.zip](https://www.cityscapes-dataset.com/file-handling/?packageID=1)
+>    2. [gtCoarse.zip](https://www.cityscapes-dataset.com/file-handling/?packageID=2)
+>    3. [leftImg8bit_trainvaltest.zip](https://www.cityscapes-dataset.com/file-handling/?packageID=3)
+    
 
 3. unzip the downloaded files to the respective folder names:
     ```
