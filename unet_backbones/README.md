@@ -4,6 +4,7 @@ We make changes to the github repo by [Berkay Mayalı (mberkay0)](https://github
 And include CosPGD, SegPGD and PGD attacks.
 
 ## Requirements
+
 python == 3.10.6
 
 create a conda environment: `conda create -n unet python=3.10.6`
@@ -12,7 +13,28 @@ activate conda environment: `conda activate unet`
 
 install all required libraries: `pip install requirements.txt`
 
-## Steps
+## Dataset: Cityscapes
+
+> Download the [CityScapes](https://www.cityscapes-dataset.com/) dataset in datasets/data/cityspaces.
+    ```
+    mkdir datasets/data
+    mkdir datasets/data/cityscapes
+    cd datasets/data/cityscapes
+    ```
+
+> Then download the files:
+1. [gtFine_trainvaltest.zip](https://www.cityscapes-dataset.com/file-handling/?packageID=1)
+2. [gtCoarse.zip](https://www.cityscapes-dataset.com/file-handling/?packageID=2)
+3. [leftImg8bit_trainvaltest.zip](https://www.cityscapes-dataset.com/file-handling/?packageID=3)
+
+> Then unzip then to the respective folder names:
+    ```
+    unzip gtFine_trainvaltest.zip -d gtFine
+    unzip gtCoarse.zip -d gtCoarse
+    unzip leftImg8bit_trainvaltest.zip -d leftImg8bit
+    ```
+
+## Steps for running the code
 
 1. Run train.py to train a model:
     ```
