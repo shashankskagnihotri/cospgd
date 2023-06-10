@@ -3,7 +3,16 @@
 We make changes to the github repo by [Berkay Mayalı (mberkay0)](https://github.com/mberkay0/pretrained-backbones-unet)
 And include CosPGD, SegPGD and PGD attacks.
 
-## STEPS
+## Requirements
+python == 3.10.6
+
+create a conda environment: `conda create -n unet python=3.10.6`
+
+activate conda environment: `conda activate unet`
+
+install all required libraries: `pip install requirements.txt`
+
+## Steps
 
 1. Run train.py to train a model:
     ```
