@@ -44,7 +44,7 @@ def get_args_parser():
     parser.add_argument('--device', default='cuda',
                         help='device to use for training / testing')
     parser.add_argument('--seed', default=42, type=int)
-    parser.add_argument('--small_decoder', default=True, type=bool)
+    parser.add_argument('--small_decoder', default=False, type=bool)
     parser.add_argument('-en', '--encoder', type=str, default='convnext_tiny', choices={'convnext_atto', 'convnext_atto_ols', 'convnext_base', 
                                                                                 'convnext_base_384_in22ft1k', 'convnext_base_in22ft1k', 
                                                                                 'convnext_base_in22k', 'convnext_femto', 'convnext_femto_ols', 
