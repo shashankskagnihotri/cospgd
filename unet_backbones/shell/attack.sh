@@ -9,6 +9,11 @@ echo "Running job $SLURM_JOB_NAME using $SLURM_JOB_CPUS_PER_NODE cpus per node w
 
 start=`date +%s`
 
+# Make conda available:
+eval "$(conda shell.bash hook)"
+# Activate a conda environment:
+conda activate robustness
+
 cd ..
 python attack.py \
     --attack $1 \
@@ -17,7 +22,7 @@ python attack.py \
     --norm $4 \
     --alpha $5 \
     --epsilon $6 \
-    --data_root /BS/asym_filter/nobackup/datasets_segmentation
+    --data_root /BS/asym_filter/nobackup/datasets_segmentation/cityscapes
 
 end=`date +%s`
 runtime=$((end-start))
