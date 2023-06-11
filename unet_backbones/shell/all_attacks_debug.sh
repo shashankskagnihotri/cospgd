@@ -1,11 +1,11 @@
 #!/bin/bash
 
-targeteds="True False"
-norms="inf two"
-iterations="3 5 10 20 40 100"
+targeteds="False"
+norms="inf"
+iterations="3"
 alphas="0.01"
 epsilons="0.03"
-attacks="cospgd pgd segpgd"
+attacks="cospgd"
 
 for attack in $attacks
 do
@@ -30,7 +30,15 @@ do
                         job_name="${attack}_its_${iteration}_target_${targeted}_l_${norm}_a_${alpha}_eps_${epsilon}"
                         out_dir="$slurm/{job_name}.out"
                         err_dir="$slurm/{job_name}.err"
-                        sbatch -J $job_name --output=out_dir --error=err_dir attack.sh $attack $iteration $targeted $norm $alpha $epsilon
+                        sbatch -J $job_name \
+                            --output=out_dir \
+                            --error=err_dir attack.sh \
+                            $attack \
+                            $iteration \
+                            $targeted \
+                            $norm \
+                            $alpha \
+                            $epsilon
                     done
                 done
             done
