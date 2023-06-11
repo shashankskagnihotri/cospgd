@@ -9,6 +9,7 @@ echo "Running job $SLURM_JOB_NAME using $SLURM_JOB_CPUS_PER_NODE cpus per node w
 
 start=`date +%s`
 
+cd ..
 python attack.py \
     --attack $1 \
     --iterations $2 \
