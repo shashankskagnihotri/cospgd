@@ -33,7 +33,7 @@ do
                         sbatch -J $job_name \
                             --output=$out_dir \
                             --error=$err_dir \
-							attack.sh \
+                            attack.sh \
                             $attack \
                             $iteration \
                             $targeted \

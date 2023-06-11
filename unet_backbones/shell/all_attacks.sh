@@ -28,11 +28,12 @@ do
                     for epsilon in $epsilons
                     do
                         job_name="${attack}_its_${iteration}_target_${targeted}_l_${norm}_a_${alpha}_eps_${epsilon}"
-                        out_dir="$slurm/{job_name}.out"
-                        err_dir="$slurm/{job_name}.err"
+                        out_dir="slurm/${job_name}.out"
+                        err_dir="slurm/${job_name}.err"
                         sbatch -J $job_name \
-                            --output=out_dir \
-                            --error=err_dir attack.sh \
+                            --output=$out_dir \
+                            --error=$err_dir \
+                            attack.sh \
                             $attack \
                             $iteration \
                             $targeted \
