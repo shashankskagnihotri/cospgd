@@ -249,7 +249,7 @@ class Trainer:
                     if self.attack == 'cospgd':
                         loss = Attack.cospgd_scale(
                             predictions = preds,
-                            labels = labels,
+                            labels = labels.long(),
                             loss = loss,
                             num_classes = self.num_classes,
                             targeted = self.targeted
