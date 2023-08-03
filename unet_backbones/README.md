@@ -11,7 +11,9 @@ create a conda environment: `conda create -n unet python=3.10.6`
 
 activate conda environment: `conda activate unet`
 
-install all required libraries: `pip install requirements.txt`
+install pytorch: `conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia`
+
+install all required libraries: `pip install -r requirements.txt`
 
 ## Dataset: Cityscapes
 
