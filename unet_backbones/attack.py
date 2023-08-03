@@ -1,7 +1,8 @@
 import sys, os
 sys.path.append('unet_backbones')
-sys.path.append(os.path.join("..", "cospgd"))
-from attack_implementations import Attack
+#sys.path.append(os.path.join("..", "cospgd"))
+sys.path.append("..")
+from cospgd import functions
 from backbones_unet.model.unet import Unet
 from backbones_unet.utils.dataset import SemanticSegmentationDataset
 from backbones_unet.model.losses import DiceLoss

@@ -26,6 +26,7 @@ coloredlogs==15.0.1
 colour==0.1.5
 command-not-found==0.3
 contourpy==1.0.7
+cospgd
 crashtest==0.4.1
 cryptography==3.4.8
 cupshelpers==1.0

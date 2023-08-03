@@ -3,7 +3,7 @@ import torch
 import math
 import sys
 from tqdm import tqdm, trange
-from attack_implementations import Attack
+from cospgd import functions
 
 import torch.nn.functional as F
 
@@ -225,14 +225,14 @@ class Trainer:
                     orig_preds = self.model(images)
                 if 'pgd' in self.attack:
                     if self.norm == 'inf':
-                        images = Attack.init_linf(
+                        images = functions.init_linf(
                             images,
                             epsilon = self.epsilon,
                             clamp_min = 0,
                             clamp_max = 1
                         )
                     elif self.norm == 'two':
-                        images = Attack.init_l2(
+                        images = functions.init_l2(
                             images,
                             epsilon = self.epsilon,
                             clamp_min = 0,
@@ -247,7 +247,7 @@ class Trainer:
                     loss = self.criterion(preds.float(), labels.float())
                 for t in range(self.iterations):                    
                     if self.attack == 'cospgd':
-                        loss = Attack.cospgd_scale(
+                        loss = functions.cospgd_scale(
                             predictions = preds,
                             labels = labels.long(),
                             loss = loss,
@@ -255,7 +255,7 @@ class Trainer:
                             targeted = self.targeted
                         )
                     elif self.attack == 'segpgd':
-                        loss = Attack.segpgd_scale(
+                        loss = functions.segpgd_scale(
                             predictions = preds,
                             labels = labels,
                             loss = loss,
@@ -266,7 +266,7 @@ class Trainer:
                     loss = loss.mean()
                     loss.backward()
                     if self.norm == 'inf':
-                        images = Attack.step_inf(
+                        images = functions.step_inf(
                             perturbed_image = images,
                             epsilon = self.epsilon,
                             data_grad = images.grad,
@@ -278,7 +278,7 @@ class Trainer:
                             grad_scale = None
                         )
                     elif self.norm == 'two':
-                        images = Attack.step_l2(
+                        images = functions.step_l2(
                             perturbed_image = images,
                             epsilon = self.epsilon,
                             data_grad = images.grad,
