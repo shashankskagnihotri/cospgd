@@ -19,3 +19,20 @@ For more details please see our [Arxiv paper](https://arxiv.org/abs/2302.02213).
 ## Contents
 
 In this repository we provide sample code for comparing CosPGD to other adversarial attacks on different networks and downstream tasks.
+
+The functions for the benchmarking tool are present in the [cospgd folder](https://github.com/shashankskagnihotri/cospgd/tree/main/cospgd)
+
+A sample use of the CosPGD benchmarking tool is provided with instructions in the [unet_backbones folder](https://github.com/shashankskagnihotri/cospgd/tree/main/unet_backbones)
+
+## Referece
+If you use our work, we would appreciate if you cite the following BibTeX citation:
+```
+@misc{agnihotri2023cospgd,
+      title={CosPGD: a unified white-box adversarial attack for pixel-wise prediction tasks}, 
+      author={Shashank Agnihotri and Steffen Jung and Margret Keuper},
+      year={2023},
+      eprint={2302.02213},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
