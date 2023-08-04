@@ -1,4 +1,8 @@
 # CosPGD: a unified white-box adversarial attack for pixel-wise prediction tasks
+The algorithm for generating adversarial samples using the CosPGD attack is as follows:
+
+<img align="center" src="assets/cospgd_algo.png" width="1050">
+
 
 ## Introduction
 
