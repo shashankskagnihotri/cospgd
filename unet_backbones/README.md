@@ -54,7 +54,7 @@ install all required libraries: `pip install -r requirements.txt`
 
 If you wish to use the pretrained model used for our evaluations, it has been provided as a [Google Drive Link here](https://drive.google.com/file/d/1TgNepNU17_HGAg6f0PaZmbRDJZCb3iaf/view?usp=sharing).
 
-We provide sample bash scripts [all_attacks.sh]() and [attack.sh]() to perform adversarial attacks using a slurm cluster.
+We provide sample bash scripts [all_attacks.sh](https://github.com/shashankskagnihotri/cospgd/blob/main/unet_backbones/all_attacks.sh) and [attack.sh](https://github.com/shashankskagnihotri/cospgd/blob/main/unet_backbones/attack.sh) to perform adversarial attacks using a slurm cluster.
 
 > Usage: `./all_attacks.sh <path to slurm output folder> <name of the GPU partition to use>`
 
