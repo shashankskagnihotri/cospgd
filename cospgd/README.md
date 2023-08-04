@@ -20,7 +20,7 @@ For more details please see our [Arxiv paper](https://arxiv.org/abs/2302.02213).
 
 ## Installation
 
-Install the package from PyPI:
+Install the package from [PyPI](https://pypi.org/project/cospgd/):
 ```
 pip install cospgd
 ```
