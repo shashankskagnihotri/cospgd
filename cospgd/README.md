@@ -122,3 +122,16 @@ functions.cospgd_scale(
 )
 ```
 
+## Referece
+If you use our work, we would appreciate if you cite the following BibTeX citation:
+```
+@misc{agnihotri2023cospgd,
+      title={CosPGD: a unified white-box adversarial attack for pixel-wise prediction tasks}, 
+      author={Shashank Agnihotri and Steffen Jung and Margret Keuper},
+      year={2023},
+      eprint={2302.02213},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
+
