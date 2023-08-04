@@ -203,10 +203,10 @@ def main(args):
     train_dataset, val_dataset = get_dataset(args)
 
     if 'train' in args.mode:
-        train_loader = DataLoader(train_dataset, batch_size=2, num_workers=24, shuffle=True)
+        train_loader = DataLoader(train_dataset, batch_size=2, num_workers=16, shuffle=True)
     else:
         train_loader = None
-    val_loader = DataLoader(val_dataset, batch_size=args.batch_size, num_workers=24, shuffle=True)
+    val_loader = DataLoader(val_dataset, batch_size=args.batch_size, num_workers=16, shuffle=True)
 
     model = Unet(
         #backbone='convnext_base', # backbone network name

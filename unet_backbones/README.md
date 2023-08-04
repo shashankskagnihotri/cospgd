@@ -54,5 +54,10 @@ install all required libraries: `pip install -r requirements.txt`
 
 If you wish to use the pretrained model used for our evaluations, it has been provided as a [Google Drive Link here](https://drive.google.com/file/d/1TgNepNU17_HGAg6f0PaZmbRDJZCb3iaf/view?usp=sharing).
 
-We provide bash scripts all_attacks.sh and attack.sh to perform adversarial attacks using a slurm cluster.
+We provide sample bash scripts [all_attacks.sh]() and [attack.sh]() to perform adversarial attacks using a slurm cluster.
+
+> Usage: `./all_attacks.sh <path to slurm output folder> <name of the GPU partition to use>`
+
+Please change the parameters passed to SBATCH as required by your hardware availability.
+
 One can update the `--path` in attack.py to the path of the model to be attacked.
