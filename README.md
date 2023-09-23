@@ -14,7 +14,7 @@ It leverages the cosine similarity between the distributions over the prediction
 We outperform the SotA on semantic segmentation attacks in our experiments on PASCAL VOC2012.
 Further, we set a new benchmark for adversarial attacks on optical flow displaying the ability to extend to any pixel-wise prediction task.
 
-For more details please see our [Arxiv paper](https://arxiv.org/abs/2302.02213).
+For more details please see our [Arxiv paper](https://arxiv.org/abs/2302.02213) (NOT ANONYMOUS).
 
 ## Contents
 
