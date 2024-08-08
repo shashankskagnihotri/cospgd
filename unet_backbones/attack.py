@@ -224,12 +224,9 @@ def main(args):
     if args.path is not None:
         checkpoint = torch.load(args.path)
         model.load_state_dict(checkpoint['model_state_dict'])       
-
-    if args.mode != "adv_attack" or args.mode != "test":
-        params = [p for p in model.parameters() if p.requires_grad]
-        optimizer = torch.optim.AdamW(params, lr=args.lr)
-    else:
-        optimizer = None
+    
+    params = [p for p in model.parameters() if p.requires_grad]
+    optimizer = torch.optim.AdamW(params, lr=args.lr)
 
     criterion = {"cross_entropy": nn.CrossEntropyLoss(ignore_index=255, reduction="none"), "dice_loss": DiceLoss(reduction=None)} 
 
