@@ -1,5 +1,5 @@
 # CosPGD
-
+## Accepted at ICML2024
 <img align="center" src="assets/sintel_targeted.png" width="1050">
 
 ## Introduction
@@ -18,21 +18,32 @@ For more details please see our [Arxiv paper](https://arxiv.org/abs/2302.02213) 
 
 ## Contents
 
-In this repository we provide sample code for comparing CosPGD to other adversarial attacks on different networks and downstream tasks.
+In this repository, we provide sample code for comparing CosPGD to other adversarial attacks on different networks and downstream tasks.
 
 The functions for the benchmarking tool are present in the [cospgd folder](https://github.com/shashankskagnihotri/cospgd/tree/main/cospgd)
 
 A sample use of the CosPGD benchmarking tool is provided with instructions in the [unet_backbones folder](https://github.com/shashankskagnihotri/cospgd/tree/main/unet_backbones)
 
 ## Referece
-If you use our work, we would appreciate if you cite the following BibTeX citation:
+If you use our work, we would appreciate it if you cite the following BibTeX citation:
 ```
-@misc{agnihotri2023cospgd,
-      title={CosPGD: a unified white-box adversarial attack for pixel-wise prediction tasks}, 
-      author={Shashank Agnihotri and Steffen Jung and Margret Keuper},
-      year={2023},
-      eprint={2302.02213},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@InProceedings{pmlr-v235-agnihotri24b,
+  title =      {{C}os{PGD}: an efficient white-box adversarial attack for pixel-wise prediction tasks},
+  author =       {Agnihotri, Shashank and Jung, Steffen and Keuper, Margret},
+  booktitle =      {Proceedings of the 41st International Conference on Machine Learning},
+  pages =      {416--451},
+  year =      {2024},
+  editor =      {Salakhutdinov, Ruslan and Kolter, Zico and Heller, Katherine and Weller, Adrian and Oliver, Nuria and Scarlett, Jonathan and Berkenkamp, Felix},
+  volume =      {235},
+  series =      {Proceedings of Machine Learning Research},
+  month =      {21--27 Jul},
+  publisher =    {PMLR},
+  pdf =      {https://raw.githubusercontent.com/mlresearch/v235/main/assets/agnihotri24b/agnihotri24b.pdf},
+  url =      {https://proceedings.mlr.press/v235/agnihotri24b.html},  
 }
+```
+
+Or the following plain text citation:
+```
+Agnihotri, S., Jung, S. &; Keuper, M.. (2024). CosPGD: an efficient white-box adversarial attack for pixel-wise prediction tasks. Proceedings of the 41st International Conference on Machine Learning, in Proceedings of Machine Learning Research 235:416–451 Available from proceedings.mlr.press/v235/agnihotri24b.html.
 ```
