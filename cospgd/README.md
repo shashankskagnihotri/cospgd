@@ -125,13 +125,19 @@ functions.cospgd_scale(
 ## Referece
 If you use our work, we would appreciate if you cite the following BibTeX citation:
 ```
-@misc{agnihotri2023cospgd,
-      title={CosPGD: a unified white-box adversarial attack for pixel-wise prediction tasks}, 
-      author={Shashank Agnihotri and Steffen Jung and Margret Keuper},
-      year={2023},
-      eprint={2302.02213},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@InProceedings{pmlr-v235-agnihotri24b,
+  title =      {{C}os{PGD}: an efficient white-box adversarial attack for pixel-wise prediction tasks},
+  author =       {Agnihotri, Shashank and Jung, Steffen and Keuper, Margret},
+  booktitle =      {Proceedings of the 41st International Conference on Machine Learning},
+  pages =      {416--451},
+  year =      {2024},
+  editor =      {Salakhutdinov, Ruslan and Kolter, Zico and Heller, Katherine and Weller, Adrian and Oliver, Nuria and Scarlett, Jonathan and Berkenkamp, Felix},
+  volume =      {235},
+  series =      {Proceedings of Machine Learning Research},
+  month =      {21--27 Jul},
+  publisher =    {PMLR},
+  pdf =      {https://raw.githubusercontent.com/mlresearch/v235/main/assets/agnihotri24b/agnihotri24b.pdf},
+  url =      {https://proceedings.mlr.press/v235/agnihotri24b.html},  
 }
 ```
 
